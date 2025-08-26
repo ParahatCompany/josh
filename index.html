@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Магазин соков Joş</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #c6f6d5, #9ae6b4);
+      background-attachment: fixed;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Фоновый логотип */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 800px;
+      height: 800px;
+      background: url('Parahat_logo_fin123.png') no-repeat center/contain;
+      opacity: 0.08;
+      transform: translate(-50%, -50%);
+      animation: floatLogo 30s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    /* Декоративные фрукты */
+    .fruit, .leaf {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      z-index: 0;
+      animation: floatFruit 25s ease-in-out infinite alternate;
+    }
+
+    .fruit.orange {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #fbd38d, #dd6b20);
+      top: 10%;
+      left: 5%;
+      animation-duration: 35s;
+    }
+
+    .fruit.orange2 {
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle at 30% 30%, #fed7d7, #e53e3e);
+      bottom: 15%;
+      right: 8%;
+      animation-duration: 28s;
+    }
+
+    .leaf.green {
+      width: 160px;
+      height: 80px;
+      background: radial-gradient(circle at 20% 50%, #9ae6b4, #2f855a);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: 20%;
+      right: 12%;
+      animation-duration: 32s;
+    }
+
+    .leaf.green2 {
+      width: 130px;
+      height: 65px;
+      background: radial-gradient(circle at 20% 50%, #c6f6d5, #276749);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      bottom: 10%;
+      left: 15%;
+      animation-duration: 40s;
+    }
+
+    @keyframes floatLogo {
+      0%   { transform: translate(-50%, -50%) translateY(-20px) scale(1); }
+      50%  { transform: translate(-50%, -50%) translateY(20px) scale(1.05); }
+      100% { transform: translate(-50%, -50%) translateY(-20px) scale(1); }
+    }
+
+    @keyframes floatFruit {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(-10deg); }
+    }
+
+    h2 {
+      color: #2f855a;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btns { display: flex; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+
+    .lang-btn {
+      margin: 8px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 2px solid #2f855a;
+      border-radius: 30px;
+      background: #38a169;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lang-btn:hover {
+      background: #48bb78;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    }
+
+    .lang-btn.active {
+      background: #fff;
+      color: #2f855a;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    }
+
+    #text {
+      margin-top: 30px;
+      font-size: 22px;
+      max-width: 700px;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      color: #2d3748;
+      line-height: 1.5;
+      text-align: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .warn {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 12px;
+      color: #2f855a;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Декоративные фрукты и листья -->
+  <div class="fruit orange"></div>
+  <div class="fruit orange2"></div>
+  <div class="leaf green"></div>
+  <div class="leaf green2"></div>
+
+  <h2 id="heading">Выберите язык:</h2>
+
+  <div class="btns">
+    <button class="lang-btn" data-lang="ru">Русский</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="de">Deutsch</button>
+    <button class="lang-btn" data-lang="fr">Français</button>
+    <button class="lang-btn" data-lang="tr">Türkçe</button>
+    <button class="lang-btn" data-lang="zh">中文</button>
+    <button class="lang-btn" data-lang="ar">العربية</button>
+  </div>
+
+  <div id="text" aria-live="polite"></div>
+  <div id="note" class="warn"></div>
+
+  <script>
+    const i18n = {
+      ru: {dir:"ltr", heading:"Выберите язык:", message:"Сок восстановленный из абрикосового пюре, торговой марки Joş."},
+      en: {dir:"ltr", heading:"Choose a language:", message:"Juice reconstituted from apricot puree, brand name Joş."},
+      de: {dir:"ltr", heading:"Sprache wählen:", message:"Aus Aprikosenpüree rekonstituierter Saft, Markenname Joş."},
+      fr: {dir:"ltr", heading:"Choisissez la langue :", message:"Jus reconstitué à partir de purée d'abricot, marque Joş."},
+      tr: {dir:"ltr", heading:"Dili seçin:", message:"Kayısı püresinden üretilmiş meyve suyu, Joş markası."},
+      zh: {dir:"ltr", heading:"选择语言：", message:"由杏泥还原制成的果汁，品牌名称 Joş。"},
+      ar: {dir:"rtl", heading:"اختر اللغة:", message:"عصير معاد تكوينه من هريس المشمش، العلامة التجارية Joş."}
+    };
+
+    const buttons = document.querySelectorAll(".lang-btn");
+    const textDiv = document.getElementById("text");
+    const noteDiv = document.getElementById("note");
+    const heading = document.getElementById("heading");
+    const htmlEl = document.documentElement;
+
+    function setLang(lang) {
+      const pack = i18n[lang];
+      if (!pack) return;
+      htmlEl.lang = lang;
+      htmlEl.dir = pack.dir || "ltr";
+      textDiv.setAttribute("lang", lang);
+      textDiv.setAttribute("dir", pack.dir || "ltr");
+      heading.textContent = pack.heading;
+      textDiv.textContent = pack.message;
+      buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+      noteDiv.textContent = (lang === "ar") ? "Текст отображается справа налево (RTL)." : "";
+      localStorage.setItem("lang", lang);
+    }
+
+    const savedLang = localStorage.getItem("lang") || "ru";
+    setLang(savedLang);
+    buttons.forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+  </script>
+</body>
+</html>
